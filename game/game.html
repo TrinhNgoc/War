@@ -1,0 +1,23 @@
+<head>
+  <title>War Card Game</title>
+</head>
+
+<body>
+  <h1>War!</h1>
+  
+  <div class="game_window">
+    <button class="start">Play</button>
+    <ul>
+      {{> deck}}
+    </ul>
+  </div>
+</body>
+
+<template name="deck">
+  <li>
+    {{npcDeck}}
+  </li>
+  <li>
+    {{playerDeck}}
+  </li>
+</template>
