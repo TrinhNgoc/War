@@ -7,17 +7,11 @@
   
   <div class="game_window">
     <button class="start">Play</button>
-    <ul>
-      {{> deck}}
-    </ul>
+    {{> deck}}
   </div>
 </body>
 
 <template name="deck">
-  <li>
-    {{npcDeck}}
-  </li>
-  <li>
-    {{playerDeck}}
-  </li>
+  <a href="#" class="deck">{{npcDeck}}</a>
+  <a href="#" class="deck">{{playerDeck}}</a>
 </template>

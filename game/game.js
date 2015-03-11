@@ -28,16 +28,21 @@ if (Meteor.isClient) {
   var halfDeck = cards.splice(0, Math.floor(cards.length/2));
 
   Template.deck.helpers({
-    playerDeck: halfDeck,
-    npcDeck: cards
+    playerDeck: cards,
+    npcDeck: halfDeck
   });
 
   Template.deck.events({
     // When deck is clicked, play a card
-    // "click .deck": function () {
-    //   var card = Math.floor(Math.random() * 26);
-    //   return card;
-    // }
+    "click .deck": function () {
+      if (cards.length > 0) {
+        console.log(cards);
+        return cards.shift();
+      }
+      else{
+        return null;
+      }
+    }
   });
 }
 
