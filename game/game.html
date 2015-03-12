@@ -6,12 +6,13 @@
   <h1>War!</h1>
   
   <div class="game_window">
-    <button class="start">Play</button>
-    {{> deck}}
+    <p>{{> deck}}</p>
   </div>
 </body>
 
 <template name="deck">
-  <a href="#" class="deck">{{npcDeck}}</a>
-  <a href="#" class="deck">{{playerDeck}}</a>
+  <a href="#" class="npc_deck">{{npcDeck}}</a>
+  <p id="enemy_card">Enemy</p>
+  <p id="current_card">Me</p>
+  <a href="#" class="player_deck">{{playerDeck}}</a>
 </template>

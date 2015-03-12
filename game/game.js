@@ -33,11 +33,12 @@ if (Meteor.isClient) {
   });
 
   Template.deck.events({
-    // When deck is clicked, play a card
-    "click .deck": function () {
-      if (cards.length > 0) {
+    // When the player's deck is clicked, play a card
+    "click .player_deck": function () {
+      if (cards.length > 0 && halfDeck.length > 0) {
         console.log(cards);
-        return cards.shift();
+        document.getElementById("current_card").innerHTML = cards.shift();
+        document.getElementById("enemy_card").innerHTML = halfDeck.shift();
       }
       else{
         return null;
