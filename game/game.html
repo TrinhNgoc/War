@@ -6,13 +6,21 @@
   <h1>War!</h1>
   
   <div class="game_window">
-    <p>{{> deck}}</p>
+    <div>{{> deck}}</div>
   </div>
 </body>
 
 <template name="deck">
-  <a href="#" class="npc_deck">{{npcDeck}}</a>
-  <p id="enemy_card">Enemy</p>
-  <p id="current_card">Me</p>
-  <a href="#" class="player_deck">{{playerDeck}}</a>
+  <div class="enemy">
+    <p class="npc_deck">{{npcDeck}}</p>
+    <p id="enemy_card">Enemy</p>
+    <p id="enemy_facedown"></p>
+    <p id="enemy_faceup"></p>
+  </div>
+  <div>
+    <p id="my_faceup"></p>
+    <p id="my_facedown"></p>
+    <p id="current_card">Me</p>
+    <a href="#" class="player_deck">{{playerDeck}}</a>
+  </div>
 </template>
