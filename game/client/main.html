@@ -12,15 +12,15 @@
 
 <template name="deck">
   <div class="enemy">
-    <p class="npc_deck">{{npcDeck}}</p>
+    <p class="npc_deck"><span>{{npcDeck}}</span></p>
     <p id="enemy_card">Enemy</p>
     <p id="enemy_facedown"></p>
     <p id="enemy_faceup"></p>
   </div>
-  <div>
+  <div class="player">
     <p id="my_faceup"></p>
     <p id="my_facedown"></p>
     <p id="current_card">Me</p>
-    <a href="#" class="player_deck">{{playerDeck}}</a>
+    <a href="#" class="player_deck"><span>{{playerDeck}}</span></a>
   </div>
 </template>
