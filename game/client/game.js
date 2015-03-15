@@ -58,30 +58,48 @@ Template.deck.events({
           alert("You win!");
         }
         else {
-          var myFacedown = cards.shift();
-          var enemyFacedown = eCards.shift();
-          document.getElementById("my_facedown").innerHTML = "Facedown " +myFacedown;
-          document.getElementById("enemy_facedown").innerHTML = "Enemy Facedown " +enemyFacedown;
+          var war = function (mycard, enemycard) {
+            if (cards.length > 2 || eCards.length > 2) {
+              var myFacedown = cards.shift();
+              var enemyFacedown = eCards.shift();
+              document.getElementById("my_facedown").innerHTML = "Facedown " +myFacedown;
+              document.getElementById("enemy_facedown").innerHTML = "Enemy Facedown " +enemyFacedown;
+              // document.writeIn("Facedown" + myFacedown);
+              // document.writeIn("Enemy Facedown" + enemyFacedown);
 
-          var myFaceup = cards.shift();
-          var enemyFaceup = eCards.shift();
+              var myFaceup = cards.shift();
+              var enemyFaceup = eCards.shift();
 
-          document.getElementById("my_faceup").innerHTML = "My Faceup " + myFaceup;
-          document.getElementById("enemy_faceup").innerHTML = "Enemy Faceup " + enemyFaceup;
+              document.getElementById("my_faceup").innerHTML = "My Faceup " + myFaceup;
+              document.getElementById("enemy_faceup").innerHTML = "Enemy Faceup " + enemyFaceup;
+              // document.writeIn("My Faceup" + myFaceup);
+              // document.writeIn("Enemy Faceup" + enemyFaceup);
 
-          myCardVal = parseInt(myFaceup.split(/\D/)[1]);
-          enemyCardVal = parseInt(enemyFaceup.split(/\D/)[1]);
+              myCardVal = parseInt(myFaceup.split(/\D/)[1]);
+              enemyCardVal = parseInt(enemyFaceup.split(/\D/)[1]);
 
-          console.log(myCardVal, enemyCardVal);
+              console.log(myCardVal, enemyCardVal);
 
-          if(myCardVal > enemyCardVal) {
-            cards.push(myCard, enemyCard, myFacedown, enemyFacedown, myFaceup, enemyFaceup);
-            console.log("My deck has " + cards, cards.length, eCards.length);
-          }
-          else {
-            eCards.push(myCard, enemyCard, myFacedown, enemyFacedown, myFaceup, enemyFaceup);
-            console.log("Enemy deck has " + eCards, eCards.length, cards.length);
-          }
+              if(myCardVal > enemyCardVal) {
+                cards.push(myCard, enemyCard, myFacedown, enemyFacedown, myFaceup, enemyFaceup);
+                console.log("My deck has " + cards, cards.length, eCards.length);
+              }
+              else if (enemyCardVal > myCardVal) {
+                eCards.push(myCard, enemyCard, myFacedown, enemyFacedown, myFaceup, enemyFaceup);
+                console.log("Enemy deck has " + eCards, eCards.length, cards.length);
+              }
+              else {
+                setTimeout(war(myFaceup, enemyFaceup), 3000);
+              }            
+            }
+            else if (cards.length < 2) {
+              alert("You lose!");
+            }
+            else {
+              alert("You win!");
+            }
+          };
+          war(myCard, enemyCard);
         }
       }
       else {
@@ -89,8 +107,11 @@ Template.deck.events({
         console.log("Enemy deck has " + eCards, eCards.length, cards.length);
       }
     }
-    else{
-      return null;
+    else if (cards.length < 1) {
+      alert("You lose!");
+    }
+    else {
+      alert("You win!");
     }
   }
 });
