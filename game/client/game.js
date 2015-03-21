@@ -35,8 +35,9 @@ Template.deck.events({
     if (cards.length > 0 && eCards.length > 0) {
       var myCard = cards.shift();
       var enemyCard = eCards.shift();
-      document.getElementById("current_card").innerHTML = "Current Card " + myCard;
-      document.getElementById("enemy_card").innerHTML = "Enemy Card " + enemyCard;
+
+      document.getElementById("current_card").innerHTML = '<img src="../' + myCard + '.svg">';
+      document.getElementById("enemy_card").innerHTML = '<img src="../' + enemyCard + '.svg">';
 
       // Need to check by the number on card
       // console.log(myCard.split(/\D/)[1]);
@@ -52,26 +53,26 @@ Template.deck.events({
       }
       else if (myCardVal === enemyCardVal) {
         if (cards.length < 1) {
-          alert("You lose!");
+          if(!alert('You lose! Play again?')){window.location.reload();}
         }
         else if (eCards.length < 1) {
-          alert("You win!");
+          if(!alert('You win! Play again?')){window.location.reload();}
         }
         else {
           var war = function (mycard, enemycard) {
             if (cards.length > 2 || eCards.length > 2) {
               var myFacedown = cards.shift();
               var enemyFacedown = eCards.shift();
-              document.getElementById("my_facedown").innerHTML = "Facedown " +myFacedown;
-              document.getElementById("enemy_facedown").innerHTML = "Enemy Facedown " +enemyFacedown;
+              document.getElementById("my_facedown").innerHTML = '<img src="../Blue_Back.svg">';
+              document.getElementById("enemy_facedown").innerHTML = '<img src="../Blue_Back.svg">';
               // document.writeIn("Facedown" + myFacedown);
               // document.writeIn("Enemy Facedown" + enemyFacedown);
 
               var myFaceup = cards.shift();
               var enemyFaceup = eCards.shift();
 
-              document.getElementById("my_faceup").innerHTML = "My Faceup " + myFaceup;
-              document.getElementById("enemy_faceup").innerHTML = "Enemy Faceup " + enemyFaceup;
+              document.getElementById("my_faceup").innerHTML = '<img src="../' + myFaceup + '.svg">';
+              document.getElementById("enemy_faceup").innerHTML = '<img src="../' + enemyFaceup + '.svg">';
               // document.writeIn("My Faceup" + myFaceup);
               // document.writeIn("Enemy Faceup" + enemyFaceup);
 
@@ -92,11 +93,11 @@ Template.deck.events({
                 setTimeout(war(myFaceup, enemyFaceup), 3000);
               }            
             }
-            else if (cards.length < 2) {
-              alert("You lose!");
+            else if (cards.length < 1) {
+              if(!alert('You lose! Play again?')){window.location.reload();}
             }
             else {
-              alert("You win!");
+              if(!alert('You win! Play again?')){window.location.reload();}
             }
           };
           war(myCard, enemyCard);
@@ -108,10 +109,10 @@ Template.deck.events({
       }
     }
     else if (cards.length < 1) {
-      alert("You lose!");
+      if(!alert('You lose! Play again?')){window.location.reload();}
     }
     else {
-      alert("You win!");
+      if(!alert('You win! Play again?')){window.location.reload();}
     }
   }
 });

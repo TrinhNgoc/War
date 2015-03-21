@@ -8,11 +8,12 @@ body {
 }
 
 .npc_deck {
-  background: url('../52cards.svg') no-repeat -86px -1286px;
+  background: url('../Blue_Back.svg') no-repeat 0 0;
+  background-size: 200px 200px;
   margin-left: auto;
   margin-right: auto;
-  width: 225px;
-  height: 314px;
+  width: 200px;
+  height: 200px;
 }
 
 .npc_deck span, .player_deck span {
@@ -21,9 +22,16 @@ body {
 
 .player_deck {
   display: block;
-  background: url('../52cards.svg') no-repeat -86px -1286px;
+  background: url('../Blue_Back.svg') no-repeat 0 0;
+  background-size: 200px 200px;
   margin-left: auto;
   margin-right: auto;
-  width: 225px;
-  height: 314px;
+  width: 200px;
+  height: 200px;
+}
+#current_card img, #my_faceup img, #my_facedown img, #enemy_card img, #enemy_faceup img, #enemy_facedown img {
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+  height: 200px;
 }
