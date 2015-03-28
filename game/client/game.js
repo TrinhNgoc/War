@@ -31,81 +31,88 @@ Template.deck.helpers({
 
 Template.deck.events({
   // When the player's deck is clicked, play a card
-  "click .player_deck": function () {
+  "click .play": function () {
     if (cards.length > 0 && eCards.length > 0) {
-      var myCard = cards.shift();
-      var enemyCard = eCards.shift();
+      var flip = document.querySelector(".flip-container").classList.toggle("flip");
+      if (flip === true) {
+        var myCard = cards.shift();
+        var enemyCard = eCards.shift();
 
-      document.getElementById("current_card").innerHTML = '<img src="../' + myCard + '.svg">';
-      document.getElementById("enemy_card").innerHTML = '<img src="../' + enemyCard + '.svg">';
+        document.getElementById("current_card").innerHTML = '<img src="../' + myCard + '.svg">';
+        document.getElementById("enemy_card").innerHTML = '<img src="../' + enemyCard + '.svg">';
+        document.getElementById("counter").innerHTML = "Cards remaining: " + cards.length;
 
-      // Need to check by the number on card
-      // console.log(myCard.split(/\D/)[1]);
-      var myCardVal = parseInt(myCard.split(/\D/)[1]);
-      var enemyCardVal = parseInt(enemyCard.split(/\D/)[1]);
+        // console.log(myCard.split(/\D/)[1]);
+        var myCardVal = parseInt(myCard.split(/\D/)[1]);
+        var enemyCardVal = parseInt(enemyCard.split(/\D/)[1]);
 
-      console.log(myCardVal, enemyCardVal);
+        // console.log(myCardVal, enemyCardVal);
 
-      // Need to make an if statement for ties
-      if(myCardVal > enemyCardVal) {
-        cards.push(enemyCard, myCard);
-        console.log("My deck has " + cards, cards.length, eCards.length);
-      }
-      else if (myCardVal === enemyCardVal) {
-        if (cards.length < 1) {
-          if(!alert('You lose! Play again?')){window.location.reload();}
+        if(myCardVal > enemyCardVal) {
+          cards.push(enemyCard, myCard);
+          // console.log("My deck has " + cards, cards.length, eCards.length);
+          document.getElementById("counter").innerHTML = "Cards remaining " + cards.length;
         }
-        else if (eCards.length < 1) {
-          if(!alert('You win! Play again?')){window.location.reload();}
-        }
-        else {
-          var war = function (mycard, enemycard) {
-            if (cards.length > 2 || eCards.length > 2) {
-              var myFacedown = cards.shift();
-              var enemyFacedown = eCards.shift();
-              document.getElementById("my_facedown").innerHTML = '<img src="../Blue_Back.svg">';
-              document.getElementById("enemy_facedown").innerHTML = '<img src="../Blue_Back.svg">';
-              // document.writeIn("Facedown" + myFacedown);
-              // document.writeIn("Enemy Facedown" + enemyFacedown);
+        else if (myCardVal === enemyCardVal) {
+          if (cards.length < 1) {
+            if(!alert('You lose! Play again?')){window.location.reload();}
+          }
+          else if (eCards.length < 1) {
+            if(!alert('You win! Play again?')){window.location.reload();}
+          }
+          else {
+            var war = function (mycard, enemycard) {
+              if (cards.length > 2 || eCards.length > 2) {
+                var myFacedown = cards.shift();
+                var enemyFacedown = eCards.shift();
+                document.getElementById("my_facedown").innerHTML = '<img src="../Blue_Back.svg">';
+                document.getElementById("enemy_facedown").innerHTML = '<img src="../Blue_Back.svg">';
+                document.getElementById("counter").innerHTML = "Cards remaining " + cards.length;
+                // document.writeIn("Facedown" + myFacedown);
+                // document.writeIn("Enemy Facedown" + enemyFacedown);
 
-              var myFaceup = cards.shift();
-              var enemyFaceup = eCards.shift();
+                var myFaceup = cards.shift();
+                var enemyFaceup = eCards.shift();
 
-              document.getElementById("my_faceup").innerHTML = '<img src="../' + myFaceup + '.svg">';
-              document.getElementById("enemy_faceup").innerHTML = '<img src="../' + enemyFaceup + '.svg">';
-              // document.writeIn("My Faceup" + myFaceup);
-              // document.writeIn("Enemy Faceup" + enemyFaceup);
+                document.getElementById("my_faceup").innerHTML = '<img src="../' + myFaceup + '.svg">';
+                document.getElementById("enemy_faceup").innerHTML = '<img src="../' + enemyFaceup + '.svg">';
+                // document.writeIn("My Faceup" + myFaceup);
+                // document.writeIn("Enemy Faceup" + enemyFaceup);
 
-              myCardVal = parseInt(myFaceup.split(/\D/)[1]);
-              enemyCardVal = parseInt(enemyFaceup.split(/\D/)[1]);
+                myCardVal = parseInt(myFaceup.split(/\D/)[1]);
+                enemyCardVal = parseInt(enemyFaceup.split(/\D/)[1]);
 
-              console.log(myCardVal, enemyCardVal);
+                // console.log(myCardVal, enemyCardVal);
 
-              if(myCardVal > enemyCardVal) {
-                cards.push(myCard, enemyCard, myFacedown, enemyFacedown, myFaceup, enemyFaceup);
-                console.log("My deck has " + cards, cards.length, eCards.length);
+                if(myCardVal > enemyCardVal) {
+                  cards.push(myCard, enemyCard, myFacedown, enemyFacedown, myFaceup, enemyFaceup);
+                  // console.log("My deck has " + cards, cards.length, eCards.length);
+                  document.getElementById("counter").innerHTML = "Cards remaining: " + cards.length;
+                }
+                else if (enemyCardVal > myCardVal) {
+                  eCards.push(myCard, enemyCard, myFacedown, enemyFacedown, myFaceup, enemyFaceup);
+                  // console.log("Enemy deck has " + eCards, eCards.length, cards.length);
+                  document.getElementById("counter").innerHTML = "Cards remaining " + cards.length;
+                }
+                else {
+                  setTimeout(war(myFaceup, enemyFaceup), 3000);
+                }            
               }
-              else if (enemyCardVal > myCardVal) {
-                eCards.push(myCard, enemyCard, myFacedown, enemyFacedown, myFaceup, enemyFaceup);
-                console.log("Enemy deck has " + eCards, eCards.length, cards.length);
+              else if (cards.length < 1) {
+                if(!alert('You lose! Play again?')){window.location.reload();}
               }
               else {
-                setTimeout(war(myFaceup, enemyFaceup), 3000);
-              }            
-            }
-            else if (cards.length < 1) {
-              if(!alert('You lose! Play again?')){window.location.reload();}
-            }
-            else {
-              if(!alert('You win! Play again?')){window.location.reload();}
-            }
-          };
-          war(myCard, enemyCard);
+                if(!alert('You win! Play again?')){window.location.reload();}
+              }
+            };
+            war(myCard, enemyCard);
+          }
         }
-      }
-      else {
-        eCards.push(enemyCard, myCard);
-        console.log("Enemy deck has " + eCards, eCards.length, cards.length);
+        else {
+          eCards.push(enemyCard, myCard);
+          // console.log("Enemy deck has " + eCards, eCards.length, cards.length);
+          document.getElementById("counter").innerHTML = "Cards remaining " + cards.length;
+        }
       }
     }
     else if (cards.length < 1) {
