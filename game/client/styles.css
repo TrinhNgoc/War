@@ -1,9 +1,11 @@
 body {
-  background: -webkit-linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%); /* Chrome 10+, Saf5.1+ */
-  background:    -moz-linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%); /* FF3.6+ */
-  background:     -ms-linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%); /* IE10 */
-  background:      -o-linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%); /* Opera 11.10+ */
-  background:         linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%); /* W3C */ 
+  /*background: -webkit-linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%); /* Chrome 10+, Saf5.1+ */
+  /*background:    -moz-linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%); /* FF3.6+ */
+  /*background:     -ms-linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%); /* IE10 */
+  /*background:      -o-linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%);  Opera 11.10+ */
+  /*background:         linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%); /* W3C  */
+  background: url('../purty_wood.png');
+  /*border-image: url('../purty_wood.png') 20 stretch;*/
   text-align: center;
 }
 
@@ -46,14 +48,23 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: 120px;
-  height: 120px;
+  height: 120px
 }
+
+#enemy_card img {
+  margin-top: 35px;
+}
+
+/*#current_card img,
+#enemy_card img {
+  margin-top: 20px;
+} */
 
 #enemy_faceup img {
   position: absolute;
   z-index: 3;
   left: 48%;
-  top: 376px;
+  top: 370px;
 }
 
 #my_faceup img {
@@ -71,7 +82,7 @@ body {
 }
 
 .flip-container {
-  height: 300px;
+  height: 160px;
   perspective: 1000px;
 }
 
@@ -81,22 +92,22 @@ body {
 
 .flip-contaner, .front, .back {
   width: 120px;
-  height: 280px;
+  height: 120px;
 }
 
 .flip_action {
   transition: 0.3s;
   transform-style: preserve-3d;
   position: relative;
-  transform-origin: 100% 100px;
+  transform-origin: 100% 140px;
 }
 
 .front, .back {
   backface-visibility: hidden;
   position: absolute;
   /*top: -16px;*/
-  top: 0;
-  left: 46.8%;
+  top: 160px;
+  left: 46.9%;
 }
 
 .front {
@@ -113,4 +124,8 @@ body {
   width: 120px;
   height: 120px;
   background-size: 120px 120px;
+}
+
+.play {
+  margin: 20px;
 }
