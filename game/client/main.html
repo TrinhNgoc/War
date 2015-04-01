@@ -13,19 +13,26 @@
 <template name="deck">
   <div class="enemy">
     <div class="npc_deck"><span>{{npcDeck}}</span></div>
-    <div id="enemy_card"></div>
     
-    <!-- <div class="flip">
-      <div class="back">
-        <p class="back_card"></p>
+    <div class="flip-c">
+      <div class="flip-a">
+        <div class="back-e">
+          <div class="back_card"></div>
+        </div>
+        <div class="front-e">
+          <div id="enemy_card"></div>
+        </div>
       </div>
-      <div class="front">
-        <p id="enemy_card">Enemy</p>
-      </div>
-    </div> -->
+    </div>
 
     <div id="enemy_facedown"></div>
     <div id="enemy_faceup"></div>
+  </div>
+
+  <div class="war">
+    <span id="w">W</span>
+    <span id="a">a</span>
+    <span id="r">r</span>
   </div>
 
   <div class="player">
@@ -33,7 +40,7 @@
     <div id="my_facedown"></div>
 
     <div class="flip-container">
-      <div class="flip_action">
+      <div class="flip-action">
         <div class="front">
           <div id="current_card"></div>
         </div>
@@ -45,9 +52,7 @@
     
     <div class="player_deck"><span>{{playerDeck}}</span></div>
     
-  <button class="play">Flip</button>
-    <!-- <a href="#" class="player_deck"><span>{{playerDeck}}</span></a> -->
-
+    <button class="play">Flip</button>
     <p id="counter"></p>
   </div>
 </template>
