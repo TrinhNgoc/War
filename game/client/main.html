@@ -1,5 +1,6 @@
 <head>
   <title>War Card Game</title>
+  <link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
@@ -30,11 +31,11 @@
   </div>
 
   <div class="war">
-    <span id="w">W</span>
-    <span id="a">a</span>
-    <span id="r">r</span>
+    <p>War</p>
   </div>
 
+  <div class="player_deck"><span>{{playerDeck}}</span></div>
+  
   <div class="player">
     <div id="my_faceup"></div>
     <div id="my_facedown"></div>
@@ -49,10 +50,8 @@
         </div>
       </div>
     </div>
-    
-    <div class="player_deck"><span>{{playerDeck}}</span></div>
-    
-    <button class="play">Flip</button>
-    <p id="counter"></p>
   </div>
+  
+  <button class="play">Flip</button>
+  <p id="counter"></p>
 </template>

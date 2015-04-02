@@ -71,7 +71,6 @@ Template.deck.events({
           else {
             var war = function (mycard, enemycard) {
               // $(".war").show("slow");
-              $(".war").fadeIn("slow");
               if (cards.length > 2 || eCards.length > 2) {
                 var myFacedown = cards.shift();
                 var enemyFacedown = eCards.shift();
@@ -97,32 +96,32 @@ Template.deck.events({
 
                 if(myCardVal > enemyCardVal) {
                   cards.push(myCard, enemyCard, myFacedown, enemyFacedown, myFaceup, enemyFaceup);
-                  setTimeout(function () {
-                    faceup.innerHTML = '';
-                    efaceup.innerHTML = '';
-                    facedown.innerHTML = '';
-                    efacedown.innerHTML = '';
-                  }, 3000);
-                  setTimeout(function () {
-                    $(".war").fadeOut("slow");
-                    $(".flip-container").removeClass("flip");
-                    $(".flip-c").removeClass("flips");
-                  }, 4000);
+                  // setTimeout(function () {
+                  //   faceup.innerHTML = '';
+                  //   efaceup.innerHTML = '';
+                  //   facedown.innerHTML = '';
+                  //   efacedown.innerHTML = '';
+                  // }, 3000);
+                  // setTimeout(function () {
+                  //   $(".war").fadeOut("fast");
+                  //   $(".flip-container").removeClass("flip");
+                  //   $(".flip-c").removeClass("flips");
+                  // }, 4000);
                   counter;
                 }
                 else if (enemyCardVal > myCardVal) {
                   eCards.push(myCard, enemyCard, myFacedown, enemyFacedown, myFaceup, enemyFaceup);
-                  setTimeout(function () {
-                    faceup.innerHTML = '';
-                    efaceup.innerHTML = '';
-                    facedown.innerHTML = '';
-                    efacedown.innerHTML = '';
-                  }, 3000);
-                  setTimeout(function () {
-                    $(".war").fadeOut("slow");
-                    $(".flip-container").removeClass("flip");
-                    $(".flip-c").removeClass("flips");
-                  }, 4000);
+                  // setTimeout(function () {
+                  //   faceup.innerHTML = '';
+                  //   efaceup.innerHTML = '';
+                  //   facedown.innerHTML = '';
+                  //   efacedown.innerHTML = '';
+                  // }, 3000);
+                  // setTimeout(function () {
+                  //   $(".war").fadeOut("fast");
+                  //   $(".flip-container").removeClass("flip");
+                  //   $(".flip-c").removeClass("flips");
+                  // }, 4000);
                   counter;
                 }
                 else {
