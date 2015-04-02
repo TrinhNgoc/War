@@ -36,7 +36,8 @@ Template.deck.events({
 
       var flip = $('.flip-container').addClass('flip');
       $('.flip-c').addClass('flips');
-      
+      // var flip = document.querySelector(".flip-container").classList.toggle("flip");
+      // var flips = document.querySelector(".flip-c").classList.toggle("flips");
       if (flip) {
         var myCard = cards.shift();
         var enemyCard = eCards.shift();
@@ -45,15 +46,19 @@ Template.deck.events({
         document.getElementById("enemy_card").innerHTML = '<img src="../' + enemyCard + '.svg">';
         var counter = document.getElementById("counter").innerHTML = "Cards remaining: " + cards.length;
 
+        // console.log(myCard.split(/\D/)[1]);
         var myCardVal = parseInt(myCard.split(/\D/)[1]);
         var enemyCardVal = parseInt(enemyCard.split(/\D/)[1]);
 
+        // console.log(myCardVal, enemyCardVal);
+
         if(myCardVal > enemyCardVal) {
           cards.push(enemyCard, myCard);
-          var removeFlip = setTimeout(function () {
-            $('.flip-container').removeClass('flip');
-            $('.flip-c').removeClass('flips');
+          setTimeout(function () {
+            $(".flip-container").removeClass("flip");
+            $(".flip-c").removeClass("flips");
           }, 1000);
+          // console.log("My deck has " + cards, cards.length, eCards.length);
           counter;
         }
         else if (myCardVal === enemyCardVal) {
@@ -65,48 +70,59 @@ Template.deck.events({
           }
           else {
             var war = function (mycard, enemycard) {
+              // $(".war").show("slow");
+              $(".war").fadeIn("slow");
               if (cards.length > 2 || eCards.length > 2) {
-
                 var myFacedown = cards.shift();
                 var enemyFacedown = eCards.shift();
-                var facedown = document.getElementById("my_facedown").innerHTML;
-                var efacedown = document.getElementById("enemy_facedown").innerHTML;
-                var faceup = document.getElementById("my_faceup").innerHTML;
-                var efaceup = document.getElementById("enemy_faceup").innerHTML 
-
-
-                facedown =  '<img src="../Blue_Back.svg">';
-                efacedown = '<img src="../Blue_Back.svg">';
-                faceup = '<img src="../' + myFaceup + '.svg">';
-                efaceup = '<img src="../' + enemyFaceup + '.svg">';
-                counter;
-
+            
+                var facedown = document.getElementById("my_facedown");
+                var efacedown = document.getElementById("enemy_facedown");
+                var faceup = document.getElementById("my_faceup");
+                var efaceup = document.getElementById("enemy_faceup");
                 var myFaceup = cards.shift();
                 var enemyFaceup = eCards.shift();
+
+                facedown.innerHTML = '<img src="../Blue_Back.svg">';
+                efacedown.innerHTML = '<img src="../Blue_Back.svg">';
+                faceup.innerHTML = '<img src="../' + myFaceup + '.svg">';
+                efaceup.innerHTML = '<img src="../' + enemyFaceup + '.svg">';
+                counter;
+
 
                 myCardVal = parseInt(myFaceup.split(/\D/)[1]);
                 enemyCardVal = parseInt(enemyFaceup.split(/\D/)[1]);
 
+                // console.log(myCardVal, enemyCardVal);
+
                 if(myCardVal > enemyCardVal) {
                   cards.push(myCard, enemyCard, myFacedown, enemyFacedown, myFaceup, enemyFaceup);
-                  removeFlip;
                   setTimeout(function () {
-                    faceup = '';
-                    efaceup = '';
-                    facedown = '';
-                    efacedown = '';
-                  }, 1000);
+                    faceup.innerHTML = '';
+                    efaceup.innerHTML = '';
+                    facedown.innerHTML = '';
+                    efacedown.innerHTML = '';
+                  }, 3000);
+                  setTimeout(function () {
+                    $(".war").fadeOut("slow");
+                    $(".flip-container").removeClass("flip");
+                    $(".flip-c").removeClass("flips");
+                  }, 4000);
                   counter;
                 }
                 else if (enemyCardVal > myCardVal) {
                   eCards.push(myCard, enemyCard, myFacedown, enemyFacedown, myFaceup, enemyFaceup);
-                  removeFlip;
                   setTimeout(function () {
-                    faceup = '';
-                    efaceup = '';
-                    facedown = '';
-                    efacedown = '';
-                  }, 1000);
+                    faceup.innerHTML = '';
+                    efaceup.innerHTML = '';
+                    facedown.innerHTML = '';
+                    efacedown.innerHTML = '';
+                  }, 3000);
+                  setTimeout(function () {
+                    $(".war").fadeOut("slow");
+                    $(".flip-container").removeClass("flip");
+                    $(".flip-c").removeClass("flips");
+                  }, 4000);
                   counter;
                 }
                 else {
@@ -126,8 +142,8 @@ Template.deck.events({
         else {
           eCards.push(enemyCard, myCard);
           setTimeout(function () {
-            $('.flip-container').removeClass('flip');
-            $('.flip-c').removeClass('flips');
+            $(".flip-container").removeClass("flip");
+            $(".flip-c").removeClass("flips");
           }, 1000);
           counter;
         }

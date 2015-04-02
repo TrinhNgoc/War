@@ -1,6 +1,20 @@
 body {
   background: url('../pool_table.png');
   text-align: center;
+  padding-top: 70px;
+}
+
+.war {
+  display: none;
+  font-size: 10em;
+  background: linear-gradient(179deg, #ff0000, #fffa00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+
+  -webkit-animation: Fire 3s ease infinite;
+  -moz-animation: Fire 3s ease infinite;
+  animation: Fire 3s ease infinite;
 }
 
 .npc_deck {
@@ -142,7 +156,18 @@ body {
   margin: 10px;
 }
 
-/*@-webkit-keyframes moveDown {
-  from {top: 0px;}
-  to   {top: 160px;}
-}*/
+@-webkit-keyframes Fire {
+    0%{background-position:50% 0%}
+    50%{background-position:50% 100%}
+    100%{background-position:50% 0%}
+}
+@-moz-keyframes Fire {
+    0%{background-position:50% 0%}
+    50%{background-position:50% 100%}
+    100%{background-position:50% 0%}
+}
+@keyframes Fire { 
+    0%{background-position:50% 0%}
+    50%{background-position:50% 100%}
+    100%{background-position:50% 0%}
+}
