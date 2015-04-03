@@ -70,7 +70,7 @@ Template.deck.events({
           }
           else {
             var war = function (mycard, enemycard) {
-              // $(".war").show("slow");
+              $(".war").css("visibility", "visible");
               if (cards.length > 2 || eCards.length > 2) {
                 var myFacedown = cards.shift();
                 var enemyFacedown = eCards.shift();
@@ -82,10 +82,14 @@ Template.deck.events({
                 var myFaceup = cards.shift();
                 var enemyFaceup = eCards.shift();
 
-                facedown.innerHTML = '<img src="../Blue_Back.svg">';
-                efacedown.innerHTML = '<img src="../Blue_Back.svg">';
-                faceup.innerHTML = '<img src="../' + myFaceup + '.svg">';
-                efaceup.innerHTML = '<img src="../' + enemyFaceup + '.svg">';
+                setTimeout(function () {
+                  facedown.innerHTML = '<img src="../Blue_Back.svg">';
+                  efacedown.innerHTML = '<img src="../Blue_Back.svg">';
+                }, 1000);
+                setTimeout(function () {
+                  faceup.innerHTML = '<img src="../' + myFaceup + '.svg">';
+                  efaceup.innerHTML = '<img src="../' + enemyFaceup + '.svg">';
+                }, 2000);
                 counter;
 
 
@@ -96,32 +100,32 @@ Template.deck.events({
 
                 if(myCardVal > enemyCardVal) {
                   cards.push(myCard, enemyCard, myFacedown, enemyFacedown, myFaceup, enemyFaceup);
-                  // setTimeout(function () {
-                  //   faceup.innerHTML = '';
-                  //   efaceup.innerHTML = '';
-                  //   facedown.innerHTML = '';
-                  //   efacedown.innerHTML = '';
-                  // }, 3000);
-                  // setTimeout(function () {
-                  //   $(".war").fadeOut("fast");
-                  //   $(".flip-container").removeClass("flip");
-                  //   $(".flip-c").removeClass("flips");
-                  // }, 4000);
+                  setTimeout(function () {
+                    faceup.innerHTML = '';
+                    efaceup.innerHTML = '';
+                    facedown.innerHTML = '';
+                    efacedown.innerHTML = '';
+                  }, 4000);
+                  setTimeout(function () {
+                    $(".war").animate({ opacity: 0});
+                    $(".flip-container").removeClass("flip");
+                    $(".flip-c").removeClass("flips");
+                  }, 5000);
                   counter;
                 }
                 else if (enemyCardVal > myCardVal) {
                   eCards.push(myCard, enemyCard, myFacedown, enemyFacedown, myFaceup, enemyFaceup);
-                  // setTimeout(function () {
-                  //   faceup.innerHTML = '';
-                  //   efaceup.innerHTML = '';
-                  //   facedown.innerHTML = '';
-                  //   efacedown.innerHTML = '';
-                  // }, 3000);
-                  // setTimeout(function () {
-                  //   $(".war").fadeOut("fast");
-                  //   $(".flip-container").removeClass("flip");
-                  //   $(".flip-c").removeClass("flips");
-                  // }, 4000);
+                  setTimeout(function () {
+                    faceup.innerHTML = '';
+                    efaceup.innerHTML = '';
+                    facedown.innerHTML = '';
+                    efacedown.innerHTML = '';
+                  }, 4000);
+                  setTimeout(function () {
+                    $(".war").animate({ opacity: 0});
+                    $(".flip-container").removeClass("flip");
+                    $(".flip-c").removeClass("flips");
+                  }, 5000);
                   counter;
                 }
                 else {

@@ -5,8 +5,10 @@ body {
 }
 
 .war {
-  display: none;
+  /*display: none;*/
+  visibility: hidden;
   font-size: 10em;
+  font-family: 'Permanent Marker', cursive;
   background: linear-gradient(179deg, #ff0000, #fffa00);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -66,26 +68,33 @@ body {
 #enemy_faceup img {
   position: absolute;
   z-index: 3;
-  left: 48%;
-  top: 370px;
+  left: 46.9%;
+  top: 280px;
 }
 
 #my_faceup img {
   position: absolute;
   z-index: 2;
-  left: 48%;
+  left: 47%;
+  top: 550px;
 }
 
 #my_facedown img {
-  margin-top: 20px;
+  position: absolute;
+  z-index: 1;
+  left: 47%;
+  top: 570px;
 } 
 
 #enemy_facedown img {
-  margin-bottom: 20px;
+  position: absolute;
+  z-index: 1;
+  left: 46.9%;
+  top: 255px;
 }
 
 .flip-container, .flip-c {
-  height: 160px;
+  /*height: 100px;*/
   perspective: 1000px;
 }
 
@@ -106,7 +115,7 @@ body {
   transition: 0.3s;
   transform-style: preserve-3d;
   position: relative;
-  transform-origin: 100% 140px;
+  transform-origin: 100% -140px;
 }
 
 .flip-a {
@@ -116,7 +125,7 @@ body {
 .front, .back {
   backface-visibility: hidden;
   position: absolute;
-  top: 160px;
+  top: -120px;
   left: 46.9%;
 }
 
