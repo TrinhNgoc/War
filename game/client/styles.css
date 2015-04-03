@@ -1,12 +1,23 @@
 body {
-  background: url('../pool_table.png');
   text-align: center;
-  padding-top: 70px;
+  /*padding-top: 20px;*/
+  background-color: black;
+}
+
+.game {
+  border: 25px solid transparent;
+  background: url('../dark_wood.jpg');
+  border-radius: 40%;
+  box-shadow: 5px 10px 20px black;
+}
+.game_window {
+  /*border: 30px solid white;*/
+  background: url('../pool_table.png');
+  border-radius: 40%;
 }
 
 .war {
-  /*display: none;*/
-  visibility: hidden;
+  /*visibility: visible;*/
   font-size: 10em;
   font-family: 'Permanent Marker', cursive;
   background: linear-gradient(179deg, #ff0000, #fffa00);
@@ -69,28 +80,28 @@ body {
   position: absolute;
   z-index: 3;
   left: 46.9%;
-  top: 280px;
+  top: 240px;
 }
 
 #my_faceup img {
   position: absolute;
   z-index: 2;
   left: 47%;
-  top: 550px;
+  top: 500px;
 }
 
 #my_facedown img {
   position: absolute;
   z-index: 1;
   left: 47%;
-  top: 570px;
+  top: 523px;
 } 
 
 #enemy_facedown img {
   position: absolute;
   z-index: 1;
   left: 46.9%;
-  top: 255px;
+  top: 215px;
 }
 
 .flip-container, .flip-c {
@@ -163,6 +174,21 @@ body {
 
 .play {
   margin: 10px;
+}
+
+.instructions {
+  position: absolute;
+  left: 43%;
+  top: 500px;
+  font-family: 'Oswald', sans-serif;
+  text-shadow: 2px 2px 2px #000;
+  color: white;
+}
+
+#counter {
+  font-family: 'Oswald', sans-serif;
+  text-shadow: 2px 2px 2px #000;
+  color: white;
 }
 
 @-webkit-keyframes Fire {

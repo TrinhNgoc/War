@@ -1,12 +1,13 @@
 <head>
   <title>War Card Game</title>
-  <link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Permanent+Marker|Oswald' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
-  
-  <div class="game_window">
-    <div>{{> deck}}</div>
+  <div class="game">
+    <div class="game_window">
+      <div>{{> deck}}</div>
+    </div>
   </div>
 </body>
 
@@ -29,8 +30,9 @@
     <div id="enemy_faceup"></div>
   </div>
 
-  <div class="war">
-    <p>War</p>
+  <div class="title">
+    <p class="war">War</p>
+    <p class="instructions">To win, get all the cards! Click flip to play!</p>
   </div>
 
   <div class="player_deck"><span>{{playerDeck}}</span></div>
@@ -52,5 +54,5 @@
   </div>
 
   <button class="play">Flip</button>
-  <p id="counter"></p>
+  <p id="counter">Cards remaining: 26</p>
 </template>
