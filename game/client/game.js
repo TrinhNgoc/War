@@ -1,9 +1,9 @@
 // Makes 52 cards
-var suits = new Array("C", "H", "S", "D");
+var suits = new Array("C");
 var cards = [];
 var count = 0;
 
-for (var i = 0; i < 4; i++){
+for (var i = 0; i < 1; i++){
   for (var j = 2; j <= 14; j++) {
     cards.push(suits[i] + j);
   }
@@ -32,7 +32,7 @@ Template.deck.helpers({
 Template.deck.events({
   // When the player's deck is clicked, play a card
   "click .play": function () {
-    $(".title").css("visibility" , "hidden");
+    $(".war, .instructions").animate({ opacity: 0});
     if (cards.length > 0 && eCards.length > 0) {
 
       var flip = $('.flip-container').addClass('flip');
@@ -65,7 +65,7 @@ Template.deck.events({
           }
           else {
             var war = function (mycard, enemycard) {
-              $(".war").css("visibility", "visible");
+              $(".war").animate({ opacity: 1});
               if (cards.length > 2 || eCards.length > 2) {
                 var myFacedown = cards.shift();
                 var enemyFacedown = eCards.shift();
