@@ -8,25 +8,23 @@
   margin-right: $margin;
 }
 
-@mixin card-position($position, $top, $left) {
+@mixin card-position($position, $top, $left, $right) {
   position: $position;
   top: $top;
   left: $left;
+  right: $right;
 }
-
-$desktop: 769px;
-$mobile: 480px;
 
 body {
   text-align: center;
   background-color: #000;
   .game {
-    background: url('../dark_wood.jpg');
+    background: url('../images/dark_wood.jpg');
     border: 25px solid transparent;
     border-radius: 40%;
     box-shadow: 5px 10px 20px #000;
     .game_window {
-      background: url('../pool_table.png');
+      background: url('../images/pool_table.png');
       border-radius: 40%;
     }
   }
@@ -45,7 +43,8 @@ body {
     animation: Fire 3s ease infinite;
   }
   .instructions {
-    @include card-position(absolute, 500px, 43%);
+    @include card-position(absolute, 500px, 0, 0);
+    @include center(auto);
     font-family: 'Oswald', sans-serif;
     text-shadow: 2px 2px 2px #000;
     color: white;
@@ -55,10 +54,10 @@ body {
 .enemy {
   .npc_deck {
     background: 
-      url('../Blue_Back.svg') no-repeat 0 0,
-      url('../Blue_Back.svg') no-repeat 2px 0,
-      url('../Blue_Back.svg') no-repeat 4px 0,
-      url('../Blue_Back.svg') no-repeat 6px 0;
+      url('../images/Blue_Back.svg') no-repeat 0 0,
+      url('../images/Blue_Back.svg') no-repeat 2px 0,
+      url('../images/Blue_Back.svg') no-repeat 4px 0,
+      url('../images/Blue_Back.svg') no-repeat 6px 0;
     background-size: 120px 120px;
     @include center(auto);
     @include card-size(120px);
@@ -70,29 +69,39 @@ body {
     .flip-a {
       transform-origin: 100% 0px;
       .front-e {
+        @include card-position(absolute, -120px, 0, 0);
+        @include center(auto);
         #enemy_card img {
           margin-top: 35px;
         }
       }
+      .back-e {
+        @include card-position(absolute, -120px, 0, 0);
+        @include center(auto);
+      }
     }
   }
   #enemy_facedown img {
-    @include card-position(absolute, 215px, 46.9%);
+    // @include card-position(absolute, 215px, 46.9%);
+    @include card-position(absolute, 215px, 0, 0);
+    @include center(auto);
     z-index: 1;
   }
   #enemy_faceup img {
-    @include card-position(absolute, 240px, 46.9%);
-    z-index: 3;
+    // @include card-position(absolute, 240px, 46.9%);
+    @include card-position(absolute, 240px, 0, 0);
+    @include center(auto);
+    z-index: 2;
   }
 }
 
 .player_deck {
   display: block;
   background: 
-    url('../Blue_Back.svg') no-repeat 0 0,
-    url('../Blue_Back.svg') no-repeat -2px 0,
-    url('../Blue_Back.svg') no-repeat -4px 0,
-    url('../Blue_Back.svg') no-repeat -6px 0;
+    url('../images/Blue_Back.svg') no-repeat 0 0,
+    url('../images/Blue_Back.svg') no-repeat -2px 0,
+    url('../images/Blue_Back.svg') no-repeat -4px 0,
+    url('../images/Blue_Back.svg') no-repeat -6px 0;
   background-size: 120px 120px;
   @include center(auto);
   @include card-size(120px);
@@ -100,27 +109,34 @@ body {
     display: none;
   }
 }
+
 .player {
   #my_faceup img {
-    @include card-position(absolute, 500px, 47%);
+    // @include card-position(absolute, 500px, 47%);
+    @include card-position(absolute, 500px, 0, 0);
+    @include center(auto);
     z-index: 2;
   }
   #my_facedown img {
-    @include card-position(absolute, 523px, 47%);
+    // @include card-position(absolute, 523px, 47%);
+    @include card-position(absolute, 523px, 0, 0);
+    @include center(auto);
     z-index: 1;
   }
   .flip-container{
     .flip-action {
       .back {
-        .back_card {
-          background: url('../Blue_Back.svg') no-repeat 0 0;
-          @include card-size(120px);
-          background-size: 120px 120px;
-        }
+        @include card-position(absolute, -120px, 0, 0);
+        @include center(auto);
+      }
+      .front {
+        @include card-position(absolute, -120px, 0, 0);
+        @include center(auto);
       }
     }
   }
 }
+
 #current_card img, 
 #my_faceup img, 
 #my_facedown img, 
@@ -129,6 +145,12 @@ body {
 #enemy_facedown img {
   @include center(auto);
   @include card-size(120px);
+}
+
+.back_card {
+  background: url('../images/Blue_Back.svg') no-repeat 0 0;
+  @include card-size(120px);
+  background-size: 120px 120px;
 }
 
 .flip-container, .flip-c {
@@ -154,14 +176,8 @@ body {
   transform-origin: 100% -140px;
 }
 
-.front, .back {
+.front, .back, .front-e, .back-e {
   backface-visibility: hidden;
-  @include card-position(absolute, -120px, 46.9%);
-}
-
-.front-e, .back-e {
-  backface-visibility: hidden;
-  @include card-position(absolute, -120px, 46.8%);
 }
 
 .front, .front-e {
