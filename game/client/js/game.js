@@ -1,9 +1,9 @@
 // Makes 52 cards
-var suits = new Array("C");
+var suits = new Array("C", "H", "S", "D");
 var cards = [];
 var count = 0;
 
-for (var i = 0; i < 1; i++){
+for (var i = 0; i < 4; i++){
   for (var j = 2; j <= 14; j++) {
     cards.push(suits[i] + j);
   }
