@@ -18,15 +18,15 @@
 body {
   text-align: center;
   background-color: #000;
-  .game {
-    background: url('../images/dark_wood.jpg');
-    border: 25px solid transparent;
-    border-radius: 40%;
-    box-shadow: 5px 10px 20px #000;
-    .game_window {
-      background: url('../images/pool_table.png');
-      border-radius: 40%;
-    }
+  background: url('../images/dark_wood.jpg');
+  border: 25px solid transparent;
+  .game_window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    background: url('../images/pool_table.png');
   }
 }
 
@@ -43,7 +43,7 @@ body {
     animation: Fire 3s ease infinite;
   }
   .instructions {
-    @include card-position(absolute, 500px, 0, 0);
+    @include card-position(absolute, 480px, 0, 0);
     @include center(auto);
     font-family: 'Oswald', sans-serif;
     text-shadow: 2px 2px 2px #000;
@@ -82,14 +82,12 @@ body {
     }
   }
   #enemy_facedown img {
-    // @include card-position(absolute, 215px, 46.9%);
-    @include card-position(absolute, 215px, 0, 0);
+    @include card-position(absolute, 185px, 0, 0);
     @include center(auto);
     z-index: 1;
   }
   #enemy_faceup img {
-    // @include card-position(absolute, 240px, 46.9%);
-    @include card-position(absolute, 240px, 0, 0);
+    @include card-position(absolute, 210px, 0, 0);
     @include center(auto);
     z-index: 2;
   }
@@ -112,14 +110,12 @@ body {
 
 .player {
   #my_faceup img {
-    // @include card-position(absolute, 500px, 47%);
-    @include card-position(absolute, 500px, 0, 0);
+    @include card-position(absolute, 470px, 0, 0);
     @include center(auto);
     z-index: 2;
   }
   #my_facedown img {
-    // @include card-position(absolute, 523px, 47%);
-    @include card-position(absolute, 523px, 0, 0);
+    @include card-position(absolute, 490px, 0, 0);
     @include center(auto);
     z-index: 1;
   }
@@ -190,13 +186,14 @@ body {
 }
 
 .play {
-  margin: 10px;
+  margin-top: 10px;
 }
 
 #counter {
   font-family: 'Oswald', sans-serif;
   text-shadow: 2px 2px 2px #000;
   color: white;
+  padding-bottom: 10px;
 }
 
 @-webkit-keyframes Fire {
