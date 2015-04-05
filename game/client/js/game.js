@@ -41,19 +41,23 @@ Template.deck.events({
         var myCard = cards.shift();
         var enemyCard = eCards.shift();
 
-        document.getElementById("current_card").innerHTML = '<img src="../' + myCard + '.svg">';
-        document.getElementById("enemy_card").innerHTML = '<img src="../' + enemyCard + '.svg">';
+        var playCard = document.getElementById("current_card").innerHTML = '<img src="../images/' + myCard + '.svg">';
+        var ePlayCard = document.getElementById("enemy_card").innerHTML = '<img src="../images/' + enemyCard + '.svg">';
         var counter = document.getElementById("counter").innerHTML = "Cards remaining: " + cards.length;
+        var win_lose = document.getElementById("win_lose");
 
         var myCardVal = parseInt(myCard.split(/\D/)[1]);
         var enemyCardVal = parseInt(enemyCard.split(/\D/)[1]);
 
         if(myCardVal > enemyCardVal) {
+          $("#win_lose").animate({opacity: 1});
           cards.push(enemyCard, myCard);
           setTimeout(function () {
             $(".flip-container").removeClass("flip");
             $(".flip-c").removeClass("flips");
+            $("#win_lose").animate({opacity: 0});
           }, 1000);
+          win_lose.innerHTML = "You win! You take the cards!";
           counter;
         }
         else if (myCardVal === enemyCardVal) {
@@ -82,8 +86,8 @@ Template.deck.events({
                   efacedown.innerHTML = '<img src="../Blue_Back.svg">';
                 }, 1000);
                 setTimeout(function () {
-                  faceup.innerHTML = '<img src="../' + myFaceup + '.svg">';
-                  efaceup.innerHTML = '<img src="../' + enemyFaceup + '.svg">';
+                  faceup.innerHTML = '<img src="../images/' + myFaceup + '.svg">';
+                  efaceup.innerHTML = '<img src="../images/' + enemyFaceup + '.svg">';
                 }, 2000);
                 counter;
 
@@ -93,28 +97,38 @@ Template.deck.events({
 
                 if(myCardVal > enemyCardVal) {
                   cards.push(myCard, enemyCard, myFacedown, enemyFacedown, myFaceup, enemyFaceup);
+                  win_lose.innerHTML = "You win! You take the cards!";
+                  $("#win_lose").animate({opacity: 1}, 3500);
                   setTimeout(function () {
                     faceup.innerHTML = '';
                     efaceup.innerHTML = '';
                     facedown.innerHTML = '';
                     efacedown.innerHTML = '';
+                    $("#win_lose").animate({opacity: 0});
                     $(".flip-container").removeClass("flip");
                     $(".flip-c").removeClass("flips");
                     $(".war").animate({ opacity: 0});
-                  }, 4000);
+                  }, 3000);
+                  // setTimeout(function() {
+                  // }, 5000);
                   counter;
                 }
                 else if (enemyCardVal > myCardVal) {
                   eCards.push(myCard, enemyCard, myFacedown, enemyFacedown, myFaceup, enemyFaceup);
+                  win_lose.innerHTML = "You lose! Computer take the cards!";
+                  $("#win_lose").animate({opacity: 1}, 3500);
                   setTimeout(function () {
                     faceup.innerHTML = '';
                     efaceup.innerHTML = '';
                     facedown.innerHTML = '';
                     efacedown.innerHTML = '';
+                    $("#win_lose").animate({opacity: 0});
                     $(".flip-container").removeClass("flip");
                     $(".flip-c").removeClass("flips");
                     $(".war").animate({ opacity: 0});
-                  }, 4000);
+                  }, 3000);
+                  // setTimeout(function() {
+                  // }, 5000);
                   counter;
                 }
                 else {
@@ -133,10 +147,13 @@ Template.deck.events({
         }
         else {
           eCards.push(enemyCard, myCard);
+          $("#win_lose").animate({opacity: 1});
           setTimeout(function () {
             $(".flip-container").removeClass("flip");
             $(".flip-c").removeClass("flips");
+            $("#win_lose").animate({opacity: 0});
           }, 1000);
+          win_lose.innerHTML = "You lose! Computer take the cards!";
           counter;
         }
       }

@@ -4,10 +4,8 @@
 </head>
 
 <body>
-  <div class="game">
-    <div class="game_window">
-      <div>{{> deck}}</div>
-    </div>
+  <div class="game_window">
+    <div>{{> deck}}</div>
   </div>
 </body>
 
@@ -32,7 +30,7 @@
 
   <div class="title">
     <p class="war">War</p>
-    <p class="instructions">To win, get all the cards! Click flip to play!</p>
+    <p class="instructions">Get all the cards to win! Click flip to play!</p>
   </div>
 
   <div class="player_deck"><span>{{playerDeck}}</span></div>
@@ -52,6 +50,8 @@
       </div>
     </div>
   </div>
+
+  <p id="win_lose"></p>
 
   <button class="play">Flip</button>
   <p id="counter">Cards remaining: 26</p>

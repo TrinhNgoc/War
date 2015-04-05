@@ -38,9 +38,9 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-size: 200% 200%;
-    -webkit-animation: Fire 3s ease infinite;
-    -moz-animation: Fire 3s ease infinite;
-    animation: Fire 3s ease infinite;
+    -webkit-animation: fire 3s ease infinite;
+    -moz-animation: fire 3s ease infinite;
+    animation: fire 3s ease infinite;
   }
   .instructions {
     @include card-position(absolute, 480px, 0, 0);
@@ -48,6 +48,7 @@ body {
     font-family: 'Oswald', sans-serif;
     text-shadow: 2px 2px 2px #000;
     color: white;
+    font-size: 25px;
   }
 }
 
@@ -196,17 +197,25 @@ body {
   padding-bottom: 10px;
 }
 
-@-webkit-keyframes Fire {
+#win_lose {
+  @include card-position(absolute, 625px, 0, 0);
+  font-family: 'Oswald', sans-serif;
+  text-shadow: 2px 2px 2px #000;
+  color: white;
+  font-size: 18px;
+}
+
+@-webkit-keyframes fire {
     0%{background-position:50% 0%}
     50%{background-position:50% 100%}
     100%{background-position:50% 0%}
 }
-@-moz-keyframes Fire {
+@-moz-keyframes fire {
     0%{background-position:50% 0%}
     50%{background-position:50% 100%}
     100%{background-position:50% 0%}
 }
-@keyframes Fire { 
+@keyframes fire { 
     0%{background-position:50% 0%}
     50%{background-position:50% 100%}
     100%{background-position:50% 0%}
