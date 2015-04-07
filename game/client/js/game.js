@@ -82,8 +82,8 @@ Template.deck.events({
                 var enemyFaceup = eCards.shift();
 
                 setTimeout(function () {
-                  facedown.innerHTML = '<img src="../Blue_Back.svg">';
-                  efacedown.innerHTML = '<img src="../Blue_Back.svg">';
+                  facedown.innerHTML = '<img src="../images/Blue_Back.svg">';
+                  efacedown.innerHTML = '<img src="../images/Blue_Back.svg">';
                 }, 1000);
                 setTimeout(function () {
                   faceup.innerHTML = '<img src="../images/' + myFaceup + '.svg">';
@@ -109,8 +109,6 @@ Template.deck.events({
                     $(".flip-c").removeClass("flips");
                     $(".war").animate({ opacity: 0});
                   }, 3000);
-                  // setTimeout(function() {
-                  // }, 5000);
                   counter;
                 }
                 else if (enemyCardVal > myCardVal) {
@@ -127,8 +125,6 @@ Template.deck.events({
                     $(".flip-c").removeClass("flips");
                     $(".war").animate({ opacity: 0});
                   }, 3000);
-                  // setTimeout(function() {
-                  // }, 5000);
                   counter;
                 }
                 else {
